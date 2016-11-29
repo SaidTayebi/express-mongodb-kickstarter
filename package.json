@@ -1,7 +1,7 @@
 {
   "name": "kickstarter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Express + MongoDB kickstarter",
   "main": "index.js",
   "author": "Said Tayebi <said.tayebi@gmail.com>",
   "scripts": {
