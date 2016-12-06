@@ -5,7 +5,7 @@ import config from '../../config';
 const superSecret = config.secret;
 
 
-  const getById = (req, res) =>{
+  const getById = (req, res) => {
     User.findById(req.params.user_id, (err, user) => {
       if (err) res.send(err);
 

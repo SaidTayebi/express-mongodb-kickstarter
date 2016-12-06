@@ -5,11 +5,11 @@ import mongoose    from 'mongoose';
 import path        from 'path';
 import compression from 'compression';
 import helmet      from 'helmet';
-
 import config      from './config';
 import apiRoutes   from './app/routes/api';
 
 const app = express();
+mongoose.Promise = global.Promise;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -28,17 +28,6 @@ app.use((req, res, next) => {
 app.use(morgan('dev'));
 
 mongoose.connect(config.database);
-
-// set static files location
-// used for requests that our frontend will make
-
-if (process.env.NODE_ENV === 'production') {
-  app.use('/js', express.static(`${__dirname}/../dist/js`));
-  app.use('/', express.static(`${__dirname}/../dist`));
-} else {
-  app.use(express.static(`${__dirname}/../frontend`));
-}
-
 
 // API ROUTES ------------------------
 app.use('/api', apiRoutes(app, express));
