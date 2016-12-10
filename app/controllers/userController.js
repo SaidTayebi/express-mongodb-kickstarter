@@ -51,8 +51,10 @@ const superSecret = config.secret;
           res.json({
             success: true,
             message: 'Enjoy your token!',
-            token: token,
-            user: user
+            data: {
+              user,
+              token
+            }
           });
 
         }

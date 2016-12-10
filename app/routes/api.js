@@ -22,7 +22,7 @@ export default (app, express) => {
         console.log(err);
         // duplicate entry
         if (err.code === 11000)
-          return res.json({ success: false, message: `A user with the email ${user.email} already exists`});
+          return res.status(500).json({ success: false, message: `A user with the email ${user.email} already exists`});
         else {
           console.log(err);
           return res.json({success: false, message: err.message});
@@ -82,7 +82,7 @@ export default (app, express) => {
         if (err) res.send(err);
 
         // return the users
-        res.json(users);
+        res.json({success: true, data: users});
       });
     });
 
